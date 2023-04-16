@@ -1,8 +1,11 @@
 package Binance
 
-import "context"
+import (
+	"context"
+)
 
 func (b *Binance) GetSymbolPrice(symbol string) (price string, err error) {
+
 	ticker, err := b.client.NewListPricesService().Symbol(symbol).Do(context.Background())
 	if err != nil {
 		return

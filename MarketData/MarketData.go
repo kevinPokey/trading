@@ -1,10 +1,10 @@
 package MarketData
 
-import "awesomeProject/Models"
+import "trading/Models"
 
 type MarketData interface {
-	Init() (err error)
+	Init(apiKey string, secretKey string) (err error)
 
 	GetSymbolPrice(symbol string) (price string, err error)
-	GetKlines(symbol string, interval int) (candleSticks Models.CandleStick, err error)
+	GetCandlesticks(symbol string, interval string) (candleSticks []Models.CandleStick, err error)
 }

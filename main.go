@@ -1,27 +1,41 @@
 package main
 
 import (
-	"awesomeProject/MarketData/Binance"
 	"fmt"
+	"github.com/gofiber/fiber/v2"
+	"github.com/joho/godotenv"
+	"os"
+	"trading/Controllers"
+	"trading/MarketData/Binance"
+	"trading/Routes"
 )
 
 func main() {
 
-	binance := Binance.Binance{}
-	err := binance.Init()
+	err := godotenv.Load()
 	if err != nil {
-		fmt.Println(err.Error())
+		fmt.Println("Could not load .env file")
 	}
 
-	price, err := binance.GetSymbolPrice("BTCUSDT")
-	if err != nil {
-		fmt.Println(err.Error())
-	}
-	fmt.Println("Btc price is", price)
+	apiKey := os.Getenv("API_KEY")
+	secretKey := os.Getenv("SECRET_KEY")
 
-	candleSticks, err := binance.GetKlines("BTCUSDT", "15m")
+	//Initialize binance
+	binance := &Binance.Binance{}
+	err = binance.Init(apiKey, secretKey)
 	if err != nil {
 		fmt.Println(err.Error())
+		return
 	}
-	fmt.Println(candleSticks[0].High)
+
+	//Initialize Controller
+	controller := Controllers.NewController(binance)
+
+	//Initialize Fiber
+	app := fiber.New()
+
+	router := Routes.CreateRouter(app, controller)
+	router.RegisterRoutes()
+
+	app.Listen(":3000")
 }
