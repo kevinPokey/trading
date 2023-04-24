@@ -6,7 +6,7 @@ import (
 	"trading/Models"
 )
 
-func MapToCandleSticks(klines []*binance.Kline) (candleSticks []Models.CandleStick) {
+func mapToCandleSticks(klines []*binance.Kline) (candleSticks []Models.CandleStick) {
 	//In Go, slices and maps are already reference types, so there is no need to return a pointer to them
 
 	//make an array for candleSticks
@@ -37,6 +37,6 @@ func (b *Binance) GetCandlesticks(symbol string, interval string) (candleSticks 
 	}
 
 	//Map klines to our own struct for compatibility
-	candleSticks = MapToCandleSticks(klines)
+	candleSticks = mapToCandleSticks(klines)
 	return
 }
