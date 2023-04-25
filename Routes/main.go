@@ -22,4 +22,5 @@ func (r *Router) RegisterRoutes() {
 
 	r.registerSymbolRoutes(api)
 	r.registerCandleStickRoutes(api)
+	r.registerPatternsRoutes(api)
 }

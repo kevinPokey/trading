@@ -3,7 +3,7 @@ package Logic
 import "trading/Models"
 
 type Logic interface {
-	Init(candleSticks []Models.CandleStick, symbol string) (err error)
+	Init(candleSticks []Models.CandleStick, symbol string)
 
-	GetRSI() (err error)
+	GetRSI(timeFrame int) (err error)
 }

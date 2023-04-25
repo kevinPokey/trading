@@ -5,7 +5,7 @@ import (
 	"trading/Logic/Talib"
 )
 
-func (controller *Controller) getPattern(c *fiber.Ctx) error {
+func (controller *Controller) GetPattern(c *fiber.Ctx) error {
 	symbol := c.Params("symbol")
 	interval := c.Params("interval")
 
@@ -17,4 +17,6 @@ func (controller *Controller) getPattern(c *fiber.Ctx) error {
 	tq := Talib.TaQuote{}
 	tq.Init(candleSticks, symbol)
 
+	result := tq.GetRSI(14)
+	return c.JSON(result)
 }

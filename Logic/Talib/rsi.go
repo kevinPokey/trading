@@ -1,5 +1,7 @@
 package Talib
 
-func (tq *TaQuote) GetRSI() (err error) {
-	return err
+import "github.com/markcheno/go-talib"
+
+func (tq *TaQuote) GetRSI(timeFrame int) []float64 {
+	return talib.Rsi(tq.close, timeFrame)
 }
