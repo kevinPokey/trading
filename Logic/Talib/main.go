@@ -1,8 +1,6 @@
 package Talib
 
-import (
-	"trading/Models"
-)
+import "trading/Models"
 
 type TaQuote struct {
 	symbol string

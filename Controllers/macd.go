@@ -6,8 +6,7 @@ import (
 	"trading/Models"
 )
 
-func (controller *Controller) GetPattern(c *fiber.Ctx) error {
-
+func (controller *Controller) GetMACD(c *fiber.Ctx) error {
 	si := new(Models.SymbolInterval)
 
 	if err := c.BodyParser(si); err != nil {
@@ -23,13 +22,14 @@ func (controller *Controller) GetPattern(c *fiber.Ctx) error {
 
 	candleSticks, err := controller.marketData.GetCandlesticks(si.Symbol, si.Interval)
 	if err != nil {
-		return err
+		return c.SendStatus(fiber.StatusBadRequest)
 	}
 
 	tq := Talib.TaQuote{}
 	tq.Init(candleSticks, si.Symbol)
+	macd, signal, bars := tq.GetMACD(12, 26, 9)
 
-	var result []string
+	result := Models.Macd{Macd: macd, Signal: signal, Bars: bars}
 
 	return c.JSON(result)
 }

@@ -3,16 +3,20 @@ module trading
 go 1.20
 
 require (
-	github.com/adshao/go-binance/v2 v2.4.1 // indirect
+	github.com/adshao/go-binance/v2 v2.4.1
+	github.com/gofiber/fiber/v2 v2.44.0
+	github.com/joho/godotenv v1.5.1
+	github.com/markcheno/go-talib v0.0.0-20190307022042-cd53a9264d70
+)
+
+require (
 	github.com/andybalholm/brotli v1.0.5 // indirect
 	github.com/bitly/go-simplejson v0.5.0 // indirect
-	github.com/gofiber/fiber/v2 v2.44.0 // indirect
 	github.com/google/uuid v1.3.0 // indirect
 	github.com/gorilla/websocket v1.5.0 // indirect
-	github.com/joho/godotenv v1.5.1 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/klauspost/compress v1.16.3 // indirect
-	github.com/markcheno/go-talib v0.0.0-20190307022042-cd53a9264d70 // indirect
+	github.com/kr/text v0.2.0 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect
 	github.com/mattn/go-isatty v0.0.18 // indirect
 	github.com/mattn/go-runewidth v0.0.14 // indirect

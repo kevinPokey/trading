@@ -7,5 +7,6 @@ func (r *Router) registerSymbolRoutes(routeGroup fiber.Router) {
 	symbolGroup := routeGroup.Group("/symbol")
 
 	symbolGroup.Get("/:symbol", r.controller.GetSymbolPrice)
+	symbolGroup.Get("/", r.controller.GetSymbols)
 
 }
