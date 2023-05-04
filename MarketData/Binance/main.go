@@ -12,7 +12,7 @@ type Binance struct {
 
 func (b *Binance) Init(apiKey string, secretKey string) (err error) {
 	//Use testnet
-	binance.UseTestnet = true
+	//binance.UseTestnet = true
 
 	//Initialize client and test connection
 	b.client = binance.NewClient(apiKey, secretKey)

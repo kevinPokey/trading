@@ -1,7 +1,6 @@
 package Patterns
 
 import (
-	"math"
 	"trading/Models"
 )
 
@@ -15,18 +14,18 @@ func getAveragePrice(candles []Models.CandleStick) float64 {
 	return avg / float64(len(candles))
 }
 
-func findBottomHorizontalLine(candles []Models.CandleStick) []float64 {
+func findBottomHorizontalLine(candles []Models.CandleStick) float64 {
 
-	lowestPrice := math.MaxFloat64
-	avg := getAveragePrice(candles)
-	allowedDiff := avg * 0.02
+	//avg := getAveragePrice(candles)
+	//allowedDiff := avg * 0.03
+	//lowestPrice := math.MaxFloat64
 
-	var downCandles []Models.CandleStick
+	//var line []Models.CandleStick
 
-	for _, candle := range candles {
-		if !CandleDirection(&candle) {
-			downCandles = append(downCandles, candle)
-		}
-	}
+	//for _, candle := range candles {
+	//	if !CandleDirection(&candle) && lowestPrice > candle.Close {
 
+	//	}
+	//}
+	return 0.0
 }

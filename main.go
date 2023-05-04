@@ -6,6 +6,7 @@ import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/joho/godotenv"
 	"os"
+	"strconv"
 	"trading/Controllers"
 	"trading/MarketData/Binance"
 	"trading/Routes"
@@ -75,5 +76,8 @@ func main() {
 	router := Routes.CreateRouter(app, controller)
 	router.RegisterRoutes()
 
+	fmt.Println(strconv.FormatFloat(104.4, 'f', 8, 64))
+
 	app.Listen(":3000")
+
 }
